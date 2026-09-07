@@ -1,7 +1,7 @@
 ---
 title: Training Program Week 2
 weight: 1
-date: 2026-09-30
+date: 2026-08-30
 draft: false
 ---
 

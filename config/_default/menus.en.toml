@@ -9,8 +9,8 @@ weight = 9_900
 
 [[main]]
 name = "Projects"
-pageRef = "posts"
-identifier = "sLAwRJH2319"
+pageRef = "posts/projects"
+identifier = "projects"
 weight = 9_999
 
 [[footer]]

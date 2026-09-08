@@ -1,0 +1,42 @@
+/* Mango + Raspberry Blowfish scheme */
+
+:root {
+  /* Base neutral colour */
+  --color-neutral: 255, 255, 255;
+
+  /* Neutral - dark grey */
+  --color-neutral-50: 248, 250, 252;
+  --color-neutral-100: 241, 245, 249;
+  --color-neutral-200: 226, 232, 240;
+  --color-neutral-300: 203, 213, 225;
+  --color-neutral-400: 148, 163, 184;
+  --color-neutral-500: 100, 116, 139;
+  --color-neutral-600: 71, 85, 105;
+  --color-neutral-700: 51, 65, 85;
+  --color-neutral-800: 30, 41, 59;
+  --color-neutral-900: 15, 23, 42;
+
+  /* Mango */
+  --color-primary-50: 255, 250, 240;
+  --color-primary-100: 255, 245, 224;
+  --color-primary-200: 255, 234, 189;
+  --color-primary-300: 255, 220, 143;
+  --color-primary-400: 255, 204, 92;
+  --color-primary-500: 255, 191, 52;
+  --color-primary-600: 204, 140, 0;
+  --color-primary-700: 163, 112, 0;
+  --color-primary-800: 128, 87, 0;
+  --color-primary-900: 87, 59, 0;
+
+  /* Raspberry */
+  --color-secondary-50: 254, 240, 246;
+  --color-secondary-100: 254, 226, 236;
+  --color-secondary-200: 252, 192, 214;
+  --color-secondary-300: 250, 148, 186;
+  --color-secondary-400: 247, 99, 155;
+  --color-secondary-500: 227, 11, 92;
+  --color-secondary-600: 195, 9, 79;
+  --color-secondary-700: 156, 8, 63;
+  --color-secondary-800: 122, 6, 49;
+  --color-secondary-900: 83, 4, 34;
+}

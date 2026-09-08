@@ -1,10 +1,7 @@
-/* Mango + Raspberry Blowfish scheme */
-
 :root {
-  /* Base neutral colour */
   --color-neutral: 255, 255, 255;
 
-  /* Neutral - dark grey */
+  /* Neutral */
   --color-neutral-50: 248, 250, 252;
   --color-neutral-100: 241, 245, 249;
   --color-neutral-200: 226, 232, 240;

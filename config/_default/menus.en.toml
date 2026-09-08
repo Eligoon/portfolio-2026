@@ -13,5 +13,12 @@ pageRef = "posts"
 identifier = "sLAwRJH2319"
 weight = 9_999
 
+[[main]]
+name = "Projects"
+pageRef = "posts/projects"
+identifier = "projects"
+parent = "sLAwRJH2319"
+weight = 10_000
+
 [[footer]]
 none = "none"

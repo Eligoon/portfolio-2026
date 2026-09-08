@@ -1,6 +1,6 @@
-colorScheme = "mangoRasp"
+colorScheme = "custom"
 defaultAppearance = "dark"
-autoSwitchAppearance = false
+autoSwitchAppearance = true
 enableA11y = false
 enableSearch = true
 enableCodeCopy = false

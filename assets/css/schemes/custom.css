@@ -1,0 +1,289 @@
+/* =========================================================
+   MANGO + RASPBERRY
+   ========================================================= */
+
+
+/* =========================================================
+   1. COLOUR VARIABLES
+   ========================================================= */
+
+:root {
+  /* Mango #FFBF34 */
+
+  --color-primary-50: 255, 252, 245;
+  --color-primary-100: 255, 247, 231;
+  --color-primary-200: 255, 239, 204;
+  --color-primary-300: 255, 229, 174;
+  --color-primary-400: 255, 213, 123;
+  --color-primary-500: 255, 191, 52;
+  --color-primary-600: 217, 162, 44;
+  --color-primary-700: 178, 134, 36;
+  --color-primary-800: 140, 105, 29;
+  --color-primary-900: 102, 76, 21;
+  --color-primary-950: 64, 48, 13;
+
+
+  /* Raspberry #E30B5C */
+
+  --color-secondary-50: 254, 243, 247;
+  --color-secondary-100: 252, 226, 235;
+  --color-secondary-200: 248, 194, 214;
+  --color-secondary-300: 244, 157, 190;
+  --color-secondary-400: 237, 96, 149;
+  --color-secondary-500: 227, 11, 92;
+  --color-secondary-600: 193, 9, 78;
+  --color-secondary-700: 159, 8, 64;
+  --color-secondary-800: 125, 6, 51;
+  --color-secondary-900: 91, 4, 37;
+  --color-secondary-950: 57, 3, 23;
+}
+
+
+/* =========================================================
+   2. ONE CONTINUOUS BACKGROUND
+   ========================================================= */
+
+/*
+   The background is a fixed layer covering the entire
+   viewport. It does NOT belong to individual Blowfish
+   sections, so there can be no seams between sections.
+*/
+
+html {
+  background: transparent !important;
+}
+
+body {
+  background: transparent !important;
+  min-height: 100vh;
+}
+
+
+/*
+   The actual Mango + Raspberry background.
+*/
+
+body::before {
+  content: "";
+  position: fixed;
+
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at 0% 0%,
+      rgba(255, 191, 52, 0.75) 0%,
+      rgba(255, 191, 52, 0.30) 35%,
+      transparent 70%
+    ),
+    radial-gradient(
+      circle at 100% 100%,
+      rgba(227, 11, 92, 0.75) 0%,
+      rgba(227, 11, 92, 0.30) 35%,
+      transparent 70%
+    ),
+    #160811;
+
+  z-index: -10;
+}
+
+
+/* =========================================================
+   3. REMOVE BLOWFISH BACKGROUNDS
+   ========================================================= */
+
+/*
+   Blowfish/Tailwind uses these neutral classes in various
+   containers. Make every one transparent.
+*/
+
+.bg-neutral-50,
+.bg-neutral-100,
+.bg-neutral-200,
+.bg-neutral-300,
+.bg-neutral-400,
+.bg-neutral-500,
+.bg-neutral-600,
+.bg-neutral-700,
+.bg-neutral-800,
+.bg-neutral-900,
+.bg-neutral-950 {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+
+/*
+   Catch dark/light variants as well.
+*/
+
+.dark .dark\:bg-neutral-50,
+.dark .dark\:bg-neutral-100,
+.dark .dark\:bg-neutral-200,
+.dark .dark\:bg-neutral-300,
+.dark .dark\:bg-neutral-400,
+.dark .dark\:bg-neutral-500,
+.dark .dark\:bg-neutral-600,
+.dark .dark\:bg-neutral-700,
+.dark .dark\:bg-neutral-800,
+.dark .dark\:bg-neutral-900,
+.dark .dark\:bg-neutral-950 {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+
+/* =========================================================
+   4. PAGE STRUCTURE
+   ========================================================= */
+
+/*
+   These are the elements most likely to create the
+   horizontal blocks visible in the screenshot.
+*/
+
+body,
+main,
+header,
+footer,
+nav,
+section,
+article,
+aside,
+div {
+  background-color: transparent;
+}
+
+
+/*
+   Override any explicit background declarations on the
+   main structural containers.
+*/
+
+main,
+#main-content,
+header,
+footer,
+nav {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+
+/* =========================================================
+   5. BLOWFISH BACKDROP / CANVAS
+   ========================================================= */
+
+/*
+   If Blowfish's background canvas is enabled, don't let
+   its layer cover our custom background.
+*/
+
+.fixed,
+.absolute {
+  /*
+     Intentionally NOT setting background here.
+     This prevents accidentally breaking images/cards.
+  */
+}
+
+
+/* =========================================================
+   6. HEADINGS
+   ========================================================= */
+
+h1 {
+  color: rgb(var(--color-primary-400)) !important;
+}
+
+h2,
+h3 {
+  color: rgb(var(--color-secondary-400)) !important;
+}
+
+
+/* =========================================================
+   7. LINKS
+   ========================================================= */
+
+a {
+  color: rgb(var(--color-secondary-400));
+}
+
+a:hover {
+  color: rgb(var(--color-primary-400));
+}
+
+
+/* =========================================================
+   8. PROJECT TITLES
+   ========================================================= */
+
+article h2 a,
+article h3 a {
+  color: rgb(var(--color-primary-400)) !important;
+}
+
+article h2 a:hover,
+article h3 a:hover {
+  color: rgb(var(--color-secondary-400)) !important;
+}
+
+
+/* =========================================================
+   9. PROJECT NUMBERS
+   ========================================================= */
+
+article h1,
+article h2 {
+  color: rgb(var(--color-primary-400)) !important;
+}
+
+
+/* =========================================================
+   10. META / DATES
+   ========================================================= */
+
+.text-neutral-500,
+.text-neutral-400 {
+  color: rgb(var(--color-secondary-400)) !important;
+}
+
+
+/* =========================================================
+   11. SELECTION
+   ========================================================= */
+
+::selection {
+  background: rgb(var(--color-secondary-500));
+  color: white;
+}
+
+
+/* =========================================================
+   12. SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #160811;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--color-primary-500));
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--color-secondary-500));
+}

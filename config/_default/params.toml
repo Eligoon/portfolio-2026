@@ -1,6 +1,6 @@
-colorScheme = "blowfish"
+colorScheme = "mangeRasp"
 defaultAppearance = "dark"
-autoSwitchAppearance = true
+autoSwitchAppearance = false
 enableA11y = false
 enableSearch = true
 enableCodeCopy = false

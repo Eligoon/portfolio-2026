@@ -5,7 +5,7 @@ date: 2026-10-05
 draft: false
 ---
 
-**## Week 6 - Testing the API.**
+## Week 6 - Testing the API.
 
 **What did I add this week?**
 

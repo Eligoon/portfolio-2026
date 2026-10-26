@@ -472,3 +472,12 @@ header {
   position: relative;
   z-index: 110;
 }
+
+/* Consistent editorial background across Blowfish layouts */
+
+html,
+body,
+#main-content,
+main {
+  background-color: transparent !important;
+}

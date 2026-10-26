@@ -1,4 +1,5 @@
 colorScheme = "custom"
+customCSS = ["css/custom.css"]
 defaultAppearance = "dark"
 autoSwitchAppearance = true
 enableA11y = false

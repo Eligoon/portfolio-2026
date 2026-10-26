@@ -6,7 +6,7 @@ draft: false
 ---
 
 
-## Week 1 - setting up shop.
+## Week 1 - Setting up shop.
 
 **What did I add this week?**
 

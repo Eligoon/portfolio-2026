@@ -1,14 +1,16 @@
+
 /* =========================================================
    MANGO + RASPBERRY
    ========================================================= */
 
 
 /* =========================================================
-   1. COLOUR VARIABLES
+   1. COLOUR PALETTE
+   Preserve the original Mango + Raspberry variables.
    ========================================================= */
 
 :root {
-  /* Mango #FFBF34 */
+  /* Mango */
 
   --color-primary-50: 255, 252, 245;
   --color-primary-100: 255, 247, 231;
@@ -22,8 +24,7 @@
   --color-primary-900: 102, 76, 21;
   --color-primary-950: 64, 48, 13;
 
-
-  /* Raspberry #E30B5C */
+  /* Raspberry */
 
   --color-secondary-50: 254, 243, 247;
   --color-secondary-100: 252, 226, 235;
@@ -36,240 +37,390 @@
   --color-secondary-800: 125, 6, 51;
   --color-secondary-900: 91, 4, 37;
   --color-secondary-950: 57, 3, 23;
+
+
+  /* Editorial design tokens */
+
+  --editorial-bg: #190D16;
+  --editorial-bg-raised: #21131D;
+  --editorial-surface: rgba(37, 22, 33, 0.78);
+
+  --editorial-text: #F5EDEB;
+  --editorial-text-soft: #D1BEC9;
+  --editorial-text-muted: #B39EAC;
+
+  --editorial-mango: #E9BC68;
+  --editorial-raspberry: #D982A0;
+
+  --editorial-border: rgba(245, 237, 235, 0.13);
+  --editorial-border-accent: rgba(233, 188, 104, 0.30);
+
+  --editorial-radius: 0.4rem;
 }
 
 
 /* =========================================================
-   2. ONE CONTINUOUS BACKGROUND
+   2. CONTINUOUS BACKGROUND
+   Soft mango and raspberry atmospheric lighting.
    ========================================================= */
 
-/*
-   The background is a fixed layer covering the entire
-   viewport. It does NOT belong to individual Blowfish
-   sections, so there can be no seams between sections.
-*/
-
 html {
-  background: transparent !important;
+  min-height: 100%;
+  background: var(--editorial-bg) !important;
 }
 
 body {
-  background: transparent !important;
   min-height: 100vh;
+  background: transparent !important;
+  color: var(--editorial-text);
 }
 
-
 /*
-   The actual Mango + Raspberry background.
+   One continuous background across the viewport.
+   The low-opacity glows keep the content in focus.
 */
 
 body::before {
   content: "";
   position: fixed;
-
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-
-  width: 100vw;
-  height: 100vh;
-
+  inset: 0;
+  z-index: 0;
   pointer-events: none;
 
   background:
     radial-gradient(
-      circle at 0% 0%,
-      rgba(255, 191, 52, 0.75) 0%,
-      rgba(255, 191, 52, 0.30) 35%,
-      transparent 70%
+      ellipse at top left,
+      rgba(255, 191, 52, 0.45) 0%,
+      transparent 55%
     ),
     radial-gradient(
-      circle at 100% 100%,
-      rgba(227, 11, 92, 0.75) 0%,
-      rgba(227, 11, 92, 0.30) 35%,
-      transparent 70%
+      ellipse at bottom right,
+      rgba(227, 11, 92, 0.40) 0%,
+      transparent 55%
     ),
-    #160811;
+    var(--editorial-bg);
+}
 
-  z-index: -10;
+
+
+/* =========================================================
+   2A. AMBIENT FRAME
+   Strong atmospheric light behind the frame.
+   ========================================================= */
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 16px;
+  z-index: 2;
+  pointer-events: none;
+
+  border: 1px solid rgba(255, 173, 112, 0.68);
+  border-radius: 20px;
+  background: transparent;
+
+
+  box-shadow:
+    /* Mango neon bloom — upper-left */
+    0 0 8px rgba(255, 205, 92, 0.95),
+    -4px -4px 18px rgba(255, 183, 55, 0.85),
+    -12px -12px 38px rgba(255, 145, 35, 0.65),
+    -22px -20px 75px rgba(255, 125, 25, 0.42),
+    -35px -30px 125px rgba(255, 115, 25, 0.24),
+
+    /* Raspberry neon bloom — lower-right */
+    0 0 8px rgba(255, 100, 165, 0.95),
+    4px 4px 18px rgba(255, 35, 112, 0.85),
+    12px 12px 38px rgba(227, 11, 92, 0.68),
+    22px 20px 75px rgba(227, 11, 92, 0.45),
+    35px 30px 125px rgba(227, 11, 92, 0.26);
+
 }
 
 
 /* =========================================================
-   3. REMOVE BLOWFISH BACKGROUNDS
+   2B. AMBIENT LIGHT OUTSIDE THE FRAME
+   Soft corner blooms, fading into deep plum.
    ========================================================= */
 
-/*
-   Blowfish/Tailwind uses these neutral classes in various
-   containers. Make every one transparent.
-*/
+html {
+  background-color: #190D16 !important;
+ 
+  background-image:
+    radial-gradient(
+      ellipse 36rem 32rem at 0% 0%,
+      rgba(255, 145, 35, 0.48) 0%,
+      rgba(255, 125, 25, 0.28) 25%,
+      rgba(255, 100, 35, 0.12) 48%,
+      transparent 72%
+    ),
+    radial-gradient(
+      ellipse 34rem 30rem at 100% 100%,
+      rgba(255, 20, 100, 0.48) 0%,
+      rgba(227, 11, 92, 0.30) 28%,
+      rgba(227, 11, 92, 0.12) 50%,
+      transparent 74%
+    ) !important;
 
-.bg-neutral-50,
-.bg-neutral-100,
-.bg-neutral-200,
-.bg-neutral-300,
-.bg-neutral-400,
-.bg-neutral-500,
-.bg-neutral-600,
-.bg-neutral-700,
-.bg-neutral-800,
-.bg-neutral-900,
-.bg-neutral-950 {
-  background: transparent !important;
-  background-color: transparent !important;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 
 
-/*
-   Catch dark/light variants as well.
-*/
-
-.dark .dark\:bg-neutral-50,
-.dark .dark\:bg-neutral-100,
-.dark .dark\:bg-neutral-200,
-.dark .dark\:bg-neutral-300,
-.dark .dark\:bg-neutral-400,
-.dark .dark\:bg-neutral-500,
-.dark .dark\:bg-neutral-600,
-.dark .dark\:bg-neutral-700,
-.dark .dark\:bg-neutral-800,
-.dark .dark\:bg-neutral-900,
-.dark .dark\:bg-neutral-950 {
-  background: transparent !important;
-  background-color: transparent !important;
-}
 
 
 /* =========================================================
-   4. PAGE STRUCTURE
+   3. BLOWFISH PAGE STRUCTURE
+   Preserve the theme's component backgrounds.
    ========================================================= */
 
 /*
-   These are the elements most likely to create the
-   horizontal blocks visible in the screenshot.
+   Only override the principal page wrappers.
+   Avoid global div, article, section, and utility overrides.
 */
 
 body,
-main,
+#main-content,
+main {
+  background-color: transparent;
+}
+
+/*
+   Keep the header and footer understated.
+   Their inner components retain their own styling.
+*/
+
 header,
-footer,
-nav,
-section,
-article,
-aside,
-div {
+footer {
   background-color: transparent;
 }
 
 
-/*
-   Override any explicit background declarations on the
-   main structural containers.
-*/
-
-main,
-#main-content,
-header,
-footer,
-nav {
-  background: transparent !important;
-  background-color: transparent !important;
-}
-
-
 /* =========================================================
-   5. BLOWFISH BACKDROP / CANVAS
+   4. EDITORIAL TYPOGRAPHY
+   Refined serif headlines, clean sans-serif body text.
    ========================================================= */
 
-/*
-   If Blowfish's background canvas is enabled, don't let
-   its layer cover our custom background.
-*/
+body {
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
 
-.fixed,
-.absolute {
-  /*
-     Intentionally NOT setting background here.
-     This prevents accidentally breaking images/cards.
-  */
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--editorial-text);
 
-/* =========================================================
-   6. HEADINGS
-   ========================================================= */
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+
+  text-wrap: pretty;
+}
 
 h1 {
-  color: rgb(var(--color-primary-500)) !important;
+  color: var(--editorial-mango);
+  font-size: clamp(2.4rem, 5vw, 4.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.04em;
 }
 
-h2,
+h2 {
+  color: var(--editorial-text);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+}
+
 h3 {
-  color: rgb(var(--color-secondary-500)) !important;
+  color: var(--editorial-text);
+  font-size: clamp(1.35rem, 2vw, 1.8rem);
+}
+
+h4,
+h5,
+h6 {
+  color: var(--editorial-text-soft);
+}
+
+p {
+  line-height: 1.8;
 }
 
 
 /* =========================================================
-   7. LINKS
+   5. SUBTLE SECTION DIVIDERS
+   ========================================================= */
+
+hr {
+  height: 1px;
+  border: 0;
+  background: var(--editorial-border);
+  margin-block: 2.5rem;
+}
+
+
+/* =========================================================
+   6. LINKS
+   Muted raspberry, with mango on interaction.
    ========================================================= */
 
 a {
-  color: rgb(var(--color-secondary-500));
+  color: var(--editorial-raspberry);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+
+  transition: color 180ms ease;
 }
 
 a:hover {
-  color: rgb(var(--color-primary-500));
+  color: var(--editorial-mango);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--editorial-mango);
+  outline-offset: 4px;
 }
 
 
 /* =========================================================
-   8. PROJECT TITLES
+   7. PROJECT TITLES
    ========================================================= */
 
 article h2 a,
 article h3 a {
-  color: rgb(var(--color-primary-500)) !important;
+  color: var(--editorial-text);
+  text-decoration: none;
 }
 
 article h2 a:hover,
 article h3 a:hover {
-  color: rgb(var(--color-secondary-500)) !important;
+  color: var(--editorial-mango);
 }
 
 
 /* =========================================================
-   9. PROJECT NUMBERS
-   ========================================================= */
-
-article h1,
-article h2 {
-  color: rgb(var(--color-primary-500)) !important;
-}
-
-
-/* =========================================================
-   10. META / DATES
+   8. ARTICLE METADATA
+   Dates, authors, reading time, and supporting text.
    ========================================================= */
 
 .text-neutral-500,
 .text-neutral-400 {
-  color: rgb(var(--color-secondary-50)) !important;
+  color: var(--editorial-text-muted);
+}
+
+/*
+   Small metadata labels can use a restrained uppercase style.
+   Applies only to the explicit class.
+*/
+
+.editorial-label {
+  color: var(--editorial-raspberry);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1.5;
+  text-transform: uppercase;
 }
 
 
 /* =========================================================
-   11. SELECTION
+   9. EDITORIAL CONTENT SURFACES
+   Optional class for custom project wrappers.
+   ========================================================= */
+
+.editorial-card {
+  background: var(--editorial-surface);
+  border: 1px solid var(--editorial-border);
+  border-radius: var(--editorial-radius);
+  padding: 1.5rem;
+
+  transition: border-color 180ms ease;
+}
+
+.editorial-card:hover {
+  border-color: var(--editorial-border-accent);
+}
+
+
+/* =========================================================
+   10. BLOCKQUOTES
+   ========================================================= */
+
+blockquote {
+  border-inline-start: 2px solid var(--editorial-mango);
+  color: var(--editorial-text-soft);
+  padding-inline-start: 1.25rem;
+}
+
+blockquote p {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.1em;
+  font-style: italic;
+}
+
+
+/* =========================================================
+   11. CODE BLOCKS
+   Retain Blowfish's own code colours and backgrounds.
+   ========================================================= */
+
+pre {
+  border: 1px solid var(--editorial-border);
+  border-radius: var(--editorial-radius);
+}
+
+:not(pre) > code {
+  color: var(--editorial-mango);
+  background: rgba(245, 237, 235, 0.07);
+  border-radius: 0.2rem;
+  padding: 0.12em 0.3em;
+}
+
+
+/* =========================================================
+   12. TABLES
+   ========================================================= */
+
+th {
+  color: var(--editorial-mango);
+  font-weight: 600;
+  text-align: left;
+}
+
+th,
+td {
+  border-color: var(--editorial-border);
+}
+
+
+/* =========================================================
+   13. TEXT SELECTION
    ========================================================= */
 
 ::selection {
-  background: rgb(var(--color-secondary-500));
-  color: white;
+  background: rgba(217, 130, 160, 0.35);
+  color: #FFFFFF;
 }
 
 
 /* =========================================================
-   12. SCROLLBAR
+   14. SCROLLBAR
    ========================================================= */
 
 ::-webkit-scrollbar {
@@ -277,13 +428,47 @@ article h2 {
 }
 
 ::-webkit-scrollbar-track {
-  background: #160811;
+  background: var(--editorial-bg);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgb(var(--color-primary-500));
+  background: #6B4658;
+  border: 2px solid var(--editorial-bg);
+  border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(var(--color-secondary-500));
+  background: var(--editorial-raspberry);
+}
+
+
+/* =========================================================
+   15. REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* Keep Blowfish navigation and dropdowns interactive */
+
+header,
+header *,
+nav,
+nav *,
+[role="menu"],
+[role="menuitem"] {
+  pointer-events: auto;
+}
+
+header {
+  position: relative;
+  z-index: 110;
 }

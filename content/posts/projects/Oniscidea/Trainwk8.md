@@ -19,7 +19,7 @@ Another change was updating the normal Hibernate configuration from `create` to 
 
 Finally, I continued implementing Google Calendar integration. I wired the OAuth service, calendar service, connection DAO and controllers into the application and added routes for starting the connection, handling the callback, and creating, updating and deleting Google Calendar events.
 
-***Which new technology did I use?**
+**Which new technology did I use?**
 
 I continued using Cucumber, Gherkin, Rest Assured and JUnit to test the API through HTTP requests. The tests use the test server on port `7071` and exercise the API in a way that resembles how a client would use it.
 
